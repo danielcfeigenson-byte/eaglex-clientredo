@@ -16,6 +16,16 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
     .tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}.tile h3{margin:0 0 5px;color:#e9f5ec}.tile p{margin:0;color:var(--muted);font-size:13px}
     .planned{font-size:11px;color:#a8b8ac;border:1px solid #405447;border-radius:6px;padding:2px 7px;margin-left:7px;vertical-align:2px}
+
+    .server{margin:22px 0 28px;padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+    .server h2{font-size:21px;margin:0 0 5px}.server .hint{margin:0 0 18px;color:var(--muted);font-size:13px}
+    .fields{display:grid;grid-template-columns:minmax(0,1fr) 130px;gap:12px}
+    label{display:block;color:#b5c9bb;font-size:12px;margin-bottom:6px}
+    input{width:100%;padding:12px 13px;border:1px solid #31533c;border-radius:9px;background:#07130d;color:#e9f5ec;font:inherit;outline:none}
+    input:focus{border-color:var(--green);box-shadow:0 0 0 3px #35e87920}
+    button{margin-top:14px;padding:11px 18px;border:0;border-radius:9px;background:var(--green);color:#06200f;font-weight:800;font:inherit;cursor:pointer}
+    button:hover{filter:brightness(1.08)}#connectStatus{min-height:22px;margin:12px 0 0;color:#b5c9bb;font-size:13px}
+    @media(max-width:520px){.fields{grid-template-columns:1fr}}
     .note{margin-top:24px;padding:14px 16px;border-left:3px solid var(--green);background:#0d1b12;color:#b5c9bb;border-radius:0 9px 9px 0;font-size:13px}
     footer{margin-top:35px;color:#668071;font-size:12px}
   </style>
@@ -28,6 +38,18 @@
       <h2>Your game. Your setup.</h2>
       <p>EagleX is being built as a green-themed browser client project. This page is the first website shell; the Minecraft game engine and client features still need to be integrated and tested.</p>
     </section>
+    <section class="server" aria-labelledby="serverTitle">
+      <h2 id="serverTitle">Join a Server</h2>
+      <p class="hint">Enter an Eaglercraft server address and optional port.</p>
+      <form id="serverForm">
+        <div class="fields">
+          <div><label for="serverAddress">SERVER ADDRESS / IP</label><input id="serverAddress" name="serverAddress" placeholder="play.example.net" autocomplete="url" required></div>
+          <div><label for="serverPort">PORT (OPTIONAL)</label><input id="serverPort" name="serverPort" inputmode="numeric" placeholder="Usually 25565"></div>
+        </div>
+        <button type="submit">CONNECT</button>
+        <p id="connectStatus" role="status" aria-live="polite">The server form is ready. Multiplayer connection is not integrated yet.</p>
+      </form>
+    </section>
     <section class="grid" aria-label="Planned client features">
       <article class="tile"><h3>Fullbright <span class="planned">PLANNED</span></h3><p>A client-side brightness option, where supported.</p></article>
       <article class="tile"><h3>Coordinates <span class="planned">PLANNED</span></h3><p>Display your current X, Y and Z position.</p></article>
@@ -38,6 +60,23 @@
     </section>
     <aside class="note">This starter page is not a playable Minecraft client yet. No feature on this page changes gameplay. The next development step is choosing and verifying a game engine/build that actually supports the Minecraft version you want.</aside>
     <footer>EagleX Client · Independent project · Not affiliated with Mojang or Microsoft</footer>
+    <script>
+      document.getElementById('serverForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const address = document.getElementById('serverAddress').value.trim();
+        const portText = document.getElementById('serverPort').value.trim();
+        const status = document.getElementById('connectStatus');
+        if (!address || /\\s/.test(address)) {
+          status.textContent = 'Enter a valid server address without spaces.';
+          return;
+        }
+        if (portText && (!/^\\d+$/.test(portText) || Number(portText) < 1 || Number(portText) > 65535)) {
+          status.textContent = 'Port must be a number from 1 to 65535.';
+          return;
+        }
+        status.textContent = 'Address entered: ' + address + (portText ? ':' + portText : '') + '. The game connection still needs to be integrated before this can join a server.';
+      });
+    </script>
   </main>
 </body>
 </html>
