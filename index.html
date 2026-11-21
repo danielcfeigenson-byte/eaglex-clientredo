@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07130d">
+  <title>EagleX Client</title>
+  <style>
+    :root{color-scheme:dark;--green:#35e879;--muted:#91a99a;--panel:#101e16;--line:#1e3928}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#17452a 0,transparent 55%),#07110b;color:#e9f5ec;font:15px/1.5 system-ui,Segoe UI,Arial,sans-serif}
+    main{width:min(920px,92%);margin:64px auto}.brand{display:flex;align-items:center;gap:14px}.mark{width:48px;height:48px;border:2px solid var(--green);border-radius:13px;display:grid;place-items:center;color:var(--green);font-weight:900;font-size:22px;box-shadow:0 0 24px #35e87933}
+    h1{margin:0;font-size:30px;letter-spacing:2px}h1 span{color:var(--green)}.sub{color:var(--muted);margin:5px 0 0}
+    .hero{margin:42px 0 28px;padding:30px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#12251a,#0c1710)}
+    .tag{display:inline-block;color:var(--green);border:1px solid #267443;border-radius:99px;padding:4px 10px;font-size:12px;letter-spacing:1px}
+    h2{font-size:27px;margin:15px 0 8px}.hero p{color:#b5c9bb;max-width:620px;margin:0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}.tile h3{margin:0 0 5px;color:#e9f5ec}.tile p{margin:0;color:var(--muted);font-size:13px}
+    .planned{font-size:11px;color:#a8b8ac;border:1px solid #405447;border-radius:6px;padding:2px 7px;margin-left:7px;vertical-align:2px}
+    .note{margin-top:24px;padding:14px 16px;border-left:3px solid var(--green);background:#0d1b12;color:#b5c9bb;border-radius:0 9px 9px 0;font-size:13px}
+    footer{margin-top:35px;color:#668071;font-size:12px}
+  </style>
+</head>
+<body>
+  <main>
+    <header class="brand"><div class="mark">EX</div><div><h1>EAGLE<span>X</span></h1><p class="sub">Minecraft browser client project</p></div></header>
+    <section class="hero">
+      <span class="tag">PROJECT STARTED</span>
+      <h2>Your game. Your setup.</h2>
+      <p>EagleX is being built as a green-themed browser client project. This page is the first website shell; the Minecraft game engine and client features still need to be integrated and tested.</p>
+    </section>
+    <section class="grid" aria-label="Planned client features">
+      <article class="tile"><h3>Fullbright <span class="planned">PLANNED</span></h3><p>A client-side brightness option, where supported.</p></article>
+      <article class="tile"><h3>Coordinates <span class="planned">PLANNED</span></h3><p>Display your current X, Y and Z position.</p></article>
+      <article class="tile"><h3>Keystrokes &amp; CPS <span class="planned">PLANNED</span></h3><p>Show movement keys and clicks per second.</p></article>
+      <article class="tile"><h3>FPS &amp; Ping <span class="planned">PLANNED</span></h3><p>Display performance and connection information.</p></article>
+      <article class="tile"><h3>Armor HUD <span class="planned">PLANNED</span></h3><p>Show equipped armor status on screen.</p></article>
+      <article class="tile"><h3>Minimap &amp; Waypoints <span class="planned">PLANNED</span></h3><p>Fair-play navigation tools for places you can see or have visited.</p></article>
+    </section>
+    <aside class="note">This starter page is not a playable Minecraft client yet. No feature on this page changes gameplay. The next development step is choosing and verifying a game engine/build that actually supports the Minecraft version you want.</aside>
+    <footer>EagleX Client · Independent project · Not affiliated with Mojang or Microsoft</footer>
+  </main>
+</body>
+</html>
